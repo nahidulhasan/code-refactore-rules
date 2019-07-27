@@ -6,19 +6,15 @@ class PostController2 {
     {
         $input = Request::all();
 
-        $validation = Validator::make($input);
-
-        if(date('l') === 'Friday')
-        {
-            throw new Exception('We do not work on Friday');
-        }
+        // we can do it before submit request
+       /* $validation = Validator::make($input);
 
         if($validation->fails())
         {
             return Redirect::back()->withInput()->withErrors($validation);
-        }
+        }*/
 
-        post::create();
+        post::create($input);
         return Redirect::home();
     }
 
